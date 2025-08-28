@@ -1,7 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  // Wrap video elements in a container
   const container = document.createElement('div');
   container.className = 'video-container';
 
@@ -10,7 +9,19 @@ export default function decorate(block) {
     videoWrapper.className = 'video-wrapper';
 
     [...row.children].forEach((child) => {
-      if (child.tagName === 'VIDEO') {
+      const text = child.textContent?.trim();
+
+      // Check for YouTube URL
+      if (text && text.includes('youtube.com/watch')) {
+        const videoId = new URL(text).searchParams.get('v');
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.className = 'video-player';
+        videoWrapper.appendChild(iframe);
+      } else if (child.tagName === 'VIDEO') {
         child.setAttribute('controls', true);
         child.setAttribute('tabindex', '0');
         child.className = 'video-player';
