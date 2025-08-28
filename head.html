@@ -1,9 +1,33 @@
-<meta
-  http-equiv="Content-Security-Policy"
-  content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
-  move-to-http-header="true"
->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script nonce="aem" src="/scripts/aem.js" type="module"></script>
-<script nonce="aem" src="/scripts/scripts.js" type="module"></script>
-<link rel="stylesheet" href="/styles/styles.css"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Site Title</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="/styles/styles.css">
+
+  <!-- AEM Sidekick and Plugin Configuration -->
+  <script>
+    window.hlx = window.hlx || {};
+    window.hlx.init = window.hlx.init || function(config) {
+      window.hlx.config = config;
+    };
+
+    window.hlx.init({
+      plugins: {
+        'asset-picker': {
+          enabled: true,
+          source: 'aem-assets',
+          endpoint: 'https://assets.adobe.com/path-to-your-assets' // Replace with your actual AEM Assets endpoint
+        }
+      }
+    });
+  </script>
+
+  <!-- Optional: Analytics or other integrations -->
+  <!-- <script src="/scripts/analytics.js"></script> -->
+
+</head>
