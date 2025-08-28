@@ -1,0 +1,30 @@
+.video > .video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.video .video-wrapper {
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.video .video-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video .video-caption {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+  font-style: italic;
+}
